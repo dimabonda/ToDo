@@ -5,8 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ToDo</title>
 	<link rel="stylesheet" href="css/style.min.css">
-	<meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content=698145467367-6gr8ltbjeilgoce29ekrf4vkedjinmdr.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
@@ -225,23 +223,8 @@
 		</div>
 	</div>
 
-	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        // var id_token = googleUser.getAuthResponse().id_token;
-        // console.log("ID Token: " + id_token);
-      }
-    </script>
+	
+	
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
@@ -251,44 +234,20 @@
 
 	<script> 
 	 // Your web app's Firebase configuration
-	 const firebaseConfig = {
-		apiKey: "AIzaSyC_5Uu9VylcbmJ2ce3QDnv2oJF9KRnEQMU",
-		authDomain: "teak-listener-320621.firebaseapp.com",
-		databaseURL: "https://teak-listener-320621-default-rtdb.europe-west1.firebasedatabase.app",
-		projectId: "teak-listener-320621",
-		storageBucket: "teak-listener-320621.appspot.com",
-		messagingSenderId: "698145467367",
-		appId: "1:698145467367:web:dba2a54490030769c86b42",
-		measurementId: "G-FGB2YVFPVF"
+	const firebaseConfig = {
+		apiKey: "AIzaSyB72F3F1EvgajzWhjO8eQwSZLKhuwJ9WwY",
+		authDomain: "new-to-do-816cd.firebaseapp.com",
+		databaseURL: "https://new-to-do-816cd-default-rtdb.europe-west1.firebasedatabase.app",
+		projectId: "new-to-do-816cd",
+		storageBucket: "new-to-do-816cd.appspot.com",
+		messagingSenderId: "801736322333",
+		appId: "1:801736322333:web:2fcb4bf1e0368c8adfc5f4",
+		measurementId: "G-RXBCMLJ4HB"
 	};
 	// Initialize Firebase
 	firebase.initializeApp(firebaseConfig); 
 	</script>
 
-	<!-- <script type="module">
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js";
-		// TODO: Add SDKs for Firebase products that you want to use
-		// https://firebase.google.com/docs/web/setup#available-libraries
-	  
-		// Your web app's Firebase configuration
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-		const firebaseConfig = {
-		  apiKey: "AIzaSyC_5Uu9VylcbmJ2ce3QDnv2oJF9KRnEQMU",
-		  authDomain: "teak-listener-320621.firebaseapp.com",
-		  databaseURL: "https://teak-listener-320621-default-rtdb.europe-west1.firebasedatabase.app",
-		  projectId: "teak-listener-320621",
-		  storageBucket: "teak-listener-320621.appspot.com",
-		  messagingSenderId: "698145467367",
-		  appId: "1:698145467367:web:3cd5daeeedb554c7c86b42",
-		  measurementId: "G-Y1B884KEXD"
-		};
-	  
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-		const analytics = getAnalytics(app);
-	</script> -->
 	<script type="module" src="js/index.js"></script>
 	
 </body>

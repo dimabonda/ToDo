@@ -1,4 +1,4 @@
-import{monthList, overlayLittleClose, overlayLittle, toDoDay, toDoInput, ol, btnAdd, toDoClear, database, rootRef} from './variables.js'
+import{monthList, toDoDay, toDoInput, ol, btnAdd, toDoClear, database, rootRef} from './variables.js'
 
 export function connectDatabase(){
 
@@ -18,12 +18,12 @@ export function connectDatabase(){
         let i = 1;
         let toDoItemContent = document.querySelectorAll('.todo-item_content');
         if(Boolean(toDoInput.value.trim())){
-            obj['todo' + i] = toDoInput.value.trim();             ////add from input
+            obj[i] = toDoInput.value.trim();             ////add from input
             i++;
         }
         toDoItemContent.forEach((item) => {                             ////add from  li
             if(item.innerHTML){
-                obj['todo' + i] = item.innerHTML;
+                obj[i] = item.innerHTML;
                 i++;
             }
         })
