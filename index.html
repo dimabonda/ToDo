@@ -5,10 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ToDo</title>
 	<link rel="stylesheet" href="css/style.min.css">
+	
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
+	
+	<div class="log">
+		<div class="login">Login</div>
+		<div class="logout">Logout</div>
+		<div class="signup">Sign up</div>
+	</div>
+
 	<h1 class="header">My to-do list</h1>
+
 	<div class="todo_list">
 		<div class="todo_header">
 			<div class="todo-day"></div>
@@ -223,32 +232,71 @@
 		</div>
 	</div>
 
+	<div class="overlay-log">
+		<form id="signup-form">
+			<input id="signup-email" type="email" name="email" placeholder="email signup"><br>
+			<input id="signup-password" type="password" name="password" placeholder="password"><br>
+			<input type="submit">
+		</form>
+		<form id="login-form">
+			<input id="login-email" type="email" name="email" placeholder="email login"><br>
+			<input id="login-password" type="password" name="password" placeholder="password"><br>
+			<input type="submit">
+		</form>
+	</div>
+	
+
 	
 	
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+	<!-- <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script> -->
+	<!-- <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>  -->
+
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script> 
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	
+  
+	
 
 	<!-- TODO: Add SDKs for Firebase products that you want to use
 		https://firebase.google.com/docs/web/setup#available-libraries -->
 
 	<script> 
-	 // Your web app's Firebase configuration
-	const firebaseConfig = {
-		apiKey: "AIzaSyB72F3F1EvgajzWhjO8eQwSZLKhuwJ9WwY",
-		authDomain: "new-to-do-816cd.firebaseapp.com",
-		databaseURL: "https://new-to-do-816cd-default-rtdb.europe-west1.firebasedatabase.app",
-		projectId: "new-to-do-816cd",
-		storageBucket: "new-to-do-816cd.appspot.com",
-		messagingSenderId: "801736322333",
-		appId: "1:801736322333:web:2fcb4bf1e0368c8adfc5f4",
-		measurementId: "G-RXBCMLJ4HB"
-	};
+	//  Your web app's Firebase configuration
+	// const firebaseConfig = {
+	// 	apiKey: "AIzaSyB72F3F1EvgajzWhjO8eQwSZLKhuwJ9WwY",
+	// 	authDomain: "new-to-do-816cd.firebaseapp.com",
+	// 	databaseURL: "https://new-to-do-816cd-default-rtdb.europe-west1.firebasedatabase.app",
+	// 	projectId: "new-to-do-816cd",
+	// 	storageBucket: "new-to-do-816cd.appspot.com",
+	// 	messagingSenderId: "801736322333",
+	// 	appId: "1:801736322333:web:2fcb4bf1e0368c8adfc5f4",
+	// 	measurementId: "G-RXBCMLJ4HB"
+	// };
 	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig); 
-	</script>
+	// firebase.initializeApp(firebaseConfig); 
 
+	const firebaseConfig = {
+		apiKey: "AIzaSyC2PdjemI4eEyElZYPWnwEeXYftuGysJIc",
+		authDomain: "auth-48adf.firebaseapp.com",
+		projectId: "auth-48adf",
+		storageBucket: "auth-48adf.appspot.com",
+		messagingSenderId: "1038031621479",
+		appId: "1:1038031621479:web:e2b843cdd0d9cb1b0f73c2",
+		measurementId: "G-4DL23CVEVC"
+  	};
+	firebase.initializeApp(firebaseConfig);   
+
+	const auth = firebase.auth();
+	const db = firebase.firestore();
+
+	// db.setings({timestampsInSnapshots: true});
+	</script>
+	
 	<script type="module" src="js/index.js"></script>
+	<script src="js/login.js"></script>
 	
 </body>
 </html>

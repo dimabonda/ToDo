@@ -24,5 +24,6 @@ export const months = document.querySelectorAll('.month'),
 
              database = firebase.database(),
              rootRef = database.ref('todo');
+             
 
 
