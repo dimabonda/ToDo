@@ -1,8 +1,13 @@
 import {createCalendar} from './calendar.js';
-import {connectDatabase} from './connect.js';
+import {authentication} from './auth.js';
+
 createCalendar();
-connectDatabase();
-    
+authentication();
+
+
+
+
+
 
 
 

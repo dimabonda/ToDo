@@ -1,7 +1,15 @@
-import{monthList, toDoDay, toDoInput, ol, btnAdd, toDoClear, database, rootRef} from './variables.js'
+import{monthList, toDoDay, toDoInput, ol, btnAdd, toDoClear, database} from './variables.js'
 
-export function connectDatabase(){
 
+export function connectDatabase(userId){
+
+    function removeList(){
+        let toDoItem = document.querySelectorAll('.todo-item');           ///////remove all li 
+            toDoItem.forEach((item) => {
+                item.remove();  
+            })
+    }
+    
     function createToDo(){                               ///////////////create element li with span and img
         const li = document.createElement("li");
         li.classList.add('todo-item');
@@ -15,7 +23,7 @@ export function connectDatabase(){
 
     function createObjectToDo(){             ///////////////////////create object (input and all li)
         let obj = new Object();
-        let i = 1;
+        let i = 0;
         let toDoItemContent = document.querySelectorAll('.todo-item_content');
         if(Boolean(toDoInput.value.trim())){
             obj[i] = toDoInput.value.trim();             ////add from input
@@ -32,14 +40,11 @@ export function connectDatabase(){
 
     function getToDoList(){                                          ////////// get todo from firebase
 
-        rootRef.child(toDoDay.innerHTML).get()
+        database.ref(`${userId}`).child(toDoDay.innerHTML).get()
         .then((snapshot) => {
             let toDoDayList = snapshot.val();
 
-            let toDoItem = document.querySelectorAll('.todo-item');           ///////remove all li 
-            toDoItem.forEach((item) => {
-                item.remove();  
-            })
+            removeList()
 
             let i = 0;
             for(let prop in toDoDayList){
@@ -53,58 +58,53 @@ export function connectDatabase(){
             }
         })
     }
-
-
-    monthList.addEventListener("click", (e) => {            //////////////select date and get todo from firebase
+    
+    monthList.onclick = (e) => {                                                              //////////////select date and get todo from firebase
         e.preventDefault();
         let target = e.target;
         if((target.classList.contains('day')) && (target.innerHTML != '')){
 
             getToDoList();
         }
-    })
-
-    btnAdd.addEventListener('click', (e) => { 
+    }
+        
+    btnAdd.onclick = (e) => {                                                                 /////add new todo 
         e.preventDefault();                  
-        let object = createObjectToDo();              /////add new todo 
-                               
-        database.ref('/todo/' + toDoDay.innerHTML).set(
+        let object = createObjectToDo();              
+        database.ref(`/${userId}/` + toDoDay.innerHTML).set(
             object
         )
         toDoInput.value = '';
 
         getToDoList();
-        
-    })
+    }
 
-
-    ol.addEventListener("click", (e) => {               ////////delete todo item
-        e.preventDefault();
+    ol.onclick = (e) => {                                          ////////delete todo item
         let target = e.target;
         if(target.tagName === 'IMG'){
             const images = Array.from(document.querySelectorAll('.todo-item img'));
             let index = images.indexOf(target);
 
-            rootRef.child(toDoDay.innerHTML).get()
+            database.ref(`${userId}`).child(toDoDay.innerHTML).get()
             .then((snapshot) => {
                 let toDoDayList = snapshot.val();
                 let keys = Object.keys(toDoDayList);
                 let value = keys[index];
-                rootRef.child(toDoDay.innerHTML).child(value).remove();
+                database.ref(`${userId}`).child(toDoDay.innerHTML).child(value).remove();
                 getToDoList();
             })
         }
-    })
-
-    toDoClear.addEventListener("click", (e) => {
+    }
+    
+    toDoClear.onclick = (e) => {
         e.preventDefault();
 
-        rootRef.child(toDoDay.innerHTML).remove();
+        database.ref(`${userId}`).child(toDoDay.innerHTML).remove();
         getToDoList();
-        
-    });
-}
+    }
 
+    getToDoList();
+}
 
 
 

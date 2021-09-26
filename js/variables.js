@@ -14,6 +14,7 @@ export const months = document.querySelectorAll('.month'),
              toDoDay = document.querySelector('.todo-day'),
              year = document.querySelector('.year'),
              monthList = document.querySelector('.month_list'),
+             toDoList = document.querySelector('.todo_list'),
 
              overlayLittleClose = document.querySelector('.overlay-alert_close'),
              overlayLittle = document.querySelector('.overlay_little'), 
@@ -22,8 +23,14 @@ export const months = document.querySelectorAll('.month'),
              btnAdd = document.querySelector('.todo-add'),
              toDoClear = document.querySelector('.todo-clear'),
 
+             loginForm = document.querySelector('#login-form'),
+             signupForm = document.querySelector('#signup-form'),
+             overlayLog = document.querySelector('.overlay-log'),
+
+             logoutBtn = document.querySelector('.logout'),
+             loginBtn = document.querySelector('.login'),
+             signupBtn = document.querySelector('.signup'),
+             closeForm = document.querySelectorAll('.form_close'),
+
              database = firebase.database(),
-             rootRef = database.ref('todo');
-             
-
-
+             auth = firebase.auth();
